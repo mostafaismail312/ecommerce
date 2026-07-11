@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer base {
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+@theme {
+    --color-primary-50: #FFF8ED;
+    --color-primary-100: #FFECCD;
+    --color-primary-200: #FFD79A;
+    --color-primary-300: #FFC067;
+    --color-primary-400: #FFAA34;
+    --color-primary-500: #FC8A06;
+    /* Base Color */
+    --color-primary-600: #E77D05;
+    --color-primary-700: #C96D04;
+    --color-primary-800: #A95B03;
+    --color-primary-900: #874702;
+    --color-primary-950: #5A2E01;
+
+    --font-Poppins: 'Poppins',
+        sans-serif;
+}
+
+@layer base {
+    body {
+        @apply font-Poppins
+    }
+
+    span, a {
+        @apply inline-block
+    }
+
+    button, a {
+        @apply cursor-pointer
+    }
+}
