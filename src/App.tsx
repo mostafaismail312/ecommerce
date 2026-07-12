@@ -15,7 +15,9 @@ import Checkout from "./pages/Checkout/Checkout"
 import Login from "./pages/Authentication/Login/Login"
 import SignUp from "./pages/Authentication/SignUp/SignUp"
 import ForgotPassword from "./pages/Authentication/ForgotPassword/ForgotPassword"
-import VerifyEmail from "./pages/Authentication/VerifyEmail/VerifyEmail"
+
+import ResetPassword from "./pages/Authentication/ResetPassword/ResetPassword"
+import VerifyResetPassword from "./pages/Authentication/VerifyResetPassword/VerifyResetPassword"
 
 function App() {
   const routes = createBrowserRouter([
@@ -40,8 +42,12 @@ function App() {
     element: <ForgotPassword />,
   },
   {
-    path: "/verify-email",
-    element: <VerifyEmail />,
+    path: "/verify-reset",
+    element: <VerifyResetPassword />,
+  },
+   {
+    path: "/reset-password",
+    element: <ResetPassword/>,
   },
   {
     path: "/brands",

@@ -14,3 +14,14 @@ export type LoginFormData = {
   email: string;
   password: string;
 };
+
+
+export type ResetPasswordFormData = {
+  email: string;
+  newPassword: string;
+};
+
+
+export type VerifyResetCodeFormData={
+  resetCode: string
+}

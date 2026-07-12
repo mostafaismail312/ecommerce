@@ -16,9 +16,9 @@ export default function ForgotPassword() {
       <AuthShell
          title="Forgot Password"
          subtitle="Enter your email address to reset your password."
-         footerText="Remember your password?"
-         footerLinkText="Sign in"
-         footerHref="/signin"
+         footerText=""
+         footerLinkText=""
+         footerHref=""
        >
  <FormProvider {...methods} >
 <form onSubmit={methods.handleSubmit(onSubmit)}>
