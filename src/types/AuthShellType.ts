@@ -4,7 +4,7 @@ export type AuthShellProps = {
   title: string;
   subtitle: string;
   children: ReactNode;
-  footerText: string;
+  footerText?: string;
   footerLinkText: string;
   footerHref: string;
 };
