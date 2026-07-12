@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import AuthShell from '../../components/Auth/AuthShell';
-import AuthInput from '../../components/Auth/AuthInput';
+
 import { FormProvider, useForm } from 'react-hook-form'
+import AuthShell from '../../../components/Auth/AuthShell';
+import AuthInput from '../../../components/Auth/AuthInput';
+import type { LoginFormData } from '../../../types/auth';
 
 export default function Login() {
-  const methods = useForm()
+  const methods = useForm<LoginFormData>()
 
-  const onSubmit = (data) => {
+  const onSubmit = (data:LoginFormData) => {
     console.log(data);
 
   }
