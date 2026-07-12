@@ -3,10 +3,7 @@ import MainLayout from "./Layouts/MainLayout/MainLayout"
 import Home from "./pages/Home/Home"
 import NotFound from "./pages/NotFound/NotFound"
 import Orders from "./pages/Orders/Orders"
-import Login from "./pages/Login/Login"
-import SignUp from "./pages/SignUp/SignUp"
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
-import VerifyEmail from "./pages/VerifyEmail/VerifyEmail"
+
 import Brands from "./pages/Brands/Brands"
 import Categories from "./pages/Categories/Categories"
 import ProductDetails from "./pages/ProductDetails/ProductDetails"
@@ -15,6 +12,11 @@ import Cart from "./pages/Cart/Cart"
 import Wishlist from "./pages/Wishlist/Wishlist"
 import Favorites from "./pages/Favorites/Favorites"
 import Checkout from "./pages/Checkout/Checkout"
+import Login from "./pages/Authentication/Login/Login"
+import SignUp from "./pages/Authentication/SignUp/SignUp"
+import ForgotPassword from "./pages/Authentication/ForgotPassword/ForgotPassword"
+import VerifyEmail from "./pages/Authentication/VerifyEmail/VerifyEmail"
+
 function App() {
   const routes = createBrowserRouter([
   {
@@ -31,7 +33,7 @@ function App() {
   },
   {
     path: "/signup",
-    element: <SignUp />,
+    element: <SignUp/>,
   },
   {
     path: "/forgot-password",
