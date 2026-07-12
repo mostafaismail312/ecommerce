@@ -3,7 +3,6 @@ import MainLayout from "./Layouts/MainLayout/MainLayout"
 import Home from "./pages/Home/Home"
 import NotFound from "./pages/NotFound/NotFound"
 import Orders from "./pages/Orders/Orders"
-
 import Brands from "./pages/Brands/Brands"
 import Categories from "./pages/Categories/Categories"
 import ProductDetails from "./pages/ProductDetails/ProductDetails"
@@ -15,10 +14,9 @@ import Checkout from "./pages/Checkout/Checkout"
 import Login from "./pages/Authentication/Login/Login"
 import SignUp from "./pages/Authentication/SignUp/SignUp"
 import ForgotPassword from "./pages/Authentication/ForgotPassword/ForgotPassword"
-<<<<<<< HEAD
-import VerifyEmail from "./pages/Authentication/VerifyEmail/VerifyEmail"
+import ResetPassword from "./pages/Authentication/ResetPassword/ResetPassword"
+import VerifyResetPassword from "./pages/Authentication/VerifyResetPassword/VerifyResetPassword"
 import { Bounce, ToastContainer } from "react-toastify"
-
 function App() {
   const routes = createBrowserRouter([
     {
@@ -42,8 +40,12 @@ function App() {
           element: <ForgotPassword />,
         },
         {
-          path: "/verify-email",
-          element: <VerifyEmail />,
+          path: "/verify-reset",
+          element: <VerifyResetPassword />,
+        },
+        {
+          path: "/reset-password",
+          element: <ResetPassword />,
         },
         {
           path: "/brands",
@@ -87,84 +89,6 @@ function App() {
         },
       ]
     }
-=======
-
-import ResetPassword from "./pages/Authentication/ResetPassword/ResetPassword"
-import VerifyResetPassword from "./pages/Authentication/VerifyResetPassword/VerifyResetPassword"
-
-function App() {
-  const routes = createBrowserRouter([
-  {
-    path:"/",
-    element: <MainLayout />,
-    children :[
-      {
-        index: true ,
-        element:<Home /> ,
-      } ,  
-       {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp/>,
-  },
-  {
-    path: "/forgot-password",
-    element: <ForgotPassword />,
-  },
-  {
-    path: "/verify-reset",
-    element: <VerifyResetPassword />,
-  },
-   {
-    path: "/reset-password",
-    element: <ResetPassword/>,
-  },
-  {
-    path: "/brands",
-    element: <Brands />,
-  },
-  {
-    path: "/categories",
-    element: <Categories />,
-  },
-  {
-    path: "/products/:id",
-    element: <ProductDetails />,
-  },
-  {
-    path: "/search",
-    element: <SearchProducts />,
-  },
-  {
-    path: "/cart",
-    element: <Cart />,
-  },
-  {
-    path: "/wishlist",
-    element: <Wishlist />,
-  },
-  {
-    path: "/favorites",
-    element: <Favorites />,
-  },
-  {
-    path: "/orders",
-    element: <Orders />,
-  },
-  {
-    path: "/checkout",
-    element: <Checkout />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
-    ]
-  }
->>>>>>> d521944aeb1b35c26a5b98d5f6f5019d015e7863
   ])
   return (
     <>
