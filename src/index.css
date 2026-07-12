@@ -37,3 +37,38 @@
         @apply cursor-pointer
     }
 }
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #fff;
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    @apply size-12 rounded-full bg-primary-400/50 text-lg
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+
+    ::slotted(svg),
+    svg {
+        pointer-events: none;
+        font-size: 10px !important;
+        width: 15px !important;
+        color: #fff;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #fff !important;
+    width: 18px !important;
+    border-radius: 5px !important;
+
+
+}

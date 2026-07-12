@@ -4,14 +4,36 @@ import { faEnvelope, faLock, faArrowRight } from '@fortawesome/free-solid-svg-ic
 import AuthShell from '../../components/Auth/AuthShell';
 import AuthInput from '../../components/Auth/AuthInput';
 import { FormProvider, useForm } from 'react-hook-form'
+import axios from "axios";
+import { toast } from "react-toastify";
+
 
 export default function Login() {
   const methods = useForm()
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (values) => {
+    console.log(values);
+    try {
+      const options = {
+        method: "POST",
+        url: "https://ecommerce.routemisr.com/api/v1/auth/signin",
+        data: values,
+      };
+      const { data } = await axios.request(options);
+
+      if (data.message === "signed in successfully") {
+        toast("Login successful!");
+        localStorage.setItem("token", data.data.token);
+      } else {
+        toast("Failed to login. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      toast("Failed to login. Please try again.");
+    }
 
   }
+
   return (
     <AuthShell
       title="Welcome back"
