@@ -1,13 +1,14 @@
 import { forgotPassword } from "../api/auth.api";
 import { useAuth } from "../hooks/useAuth";
 import type { ForgetPaasswordFormData } from "../types/auth";
+import { toast } from "react-toastify";
 
                                                 
 
 export const useForgotPassword = () =>
   useAuth<ForgetPaasswordFormData>({
     apiFn: forgotPassword,
-    redirectTo: "/verify-code",
+    redirectTo: "/verify-reset",
     onSuccess: (data) => {
       localStorage.setItem("resetEmail", data.email);
     },

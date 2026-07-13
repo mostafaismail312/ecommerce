@@ -3,6 +3,7 @@ import type { UseAuthProps } from "../types/auth";
 import { useNavigate } from "react-router-dom";
 import { useCallback, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const useAuth = <T extends FieldValues>({
   apiFn,
@@ -18,6 +19,8 @@ export const useAuth = <T extends FieldValues>({
     setError(null);
     try {
       const response = await apiFn(data);
+        toast.success(response.data?.message || "Success");
+
 
       console.log(response.data);
 
@@ -27,14 +30,17 @@ if (redirectTo) {
 }
    return response;
     } catch (error: unknown) {
+  let message = "Something went wrong";
+
   if (axios.isAxiosError(error)) {
-    setError(
-      error.response?.data?.message ??
-      error.message
-    );
-  } else {
-    setError("Something went wrong");
+    message =
+      error.response?.data?.message ||
+      error.message ||
+      "Something went wrong";
   }
+
+  setError(message);
+  toast.error(message);
  } finally {
       setIsLoading(false);
     }

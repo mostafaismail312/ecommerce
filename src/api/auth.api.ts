@@ -10,7 +10,7 @@ export const forgotPassword = (data:ForgetPaasswordFormData) => {
 
 
 export const resetPassword = (data:ResetPasswordFormData) => {
-  return api.post(ENDPOINTS.RESET_PASSWORD, {
+  return api.put(ENDPOINTS.RESET_PASSWORD, {
     email: data.email,
     newPassword:data.newPassword
   });
