@@ -1,13 +1,11 @@
-import { useForm } from "react-hook-form";
 import type { VerifyResetCodeFormData } from "../types/auth";
 import { verifyResetCode } from "../api/auth.api";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
 
 
 export const useVerifyResetPassword = () => {
-  useAuth<VerifyResetCodeFormData>({
+ return useAuth<VerifyResetCodeFormData>({
     apiFn:verifyResetCode,
     redirectTo: "/reset-password",
     onSuccess: (data) => {

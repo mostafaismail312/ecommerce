@@ -11,7 +11,8 @@ export const useForgotPassword = () =>
     onSuccess: (data) => {
       localStorage.setItem("resetEmail", data.email);
     },
-  });
+  }
+);
 //   const methods = useForm<ForgetPaasswordFormData>();
 //  const navigate = useNavigate();
 //   const onSubmit = async (data: ForgetPaasswordFormData) => {

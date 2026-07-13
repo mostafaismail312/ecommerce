@@ -1,13 +1,10 @@
-import { useForm } from "react-hook-form";
 import { resetPassword } from "../api/auth.api";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from './useAuth';
 import type { ResetPasswordFormData } from "../types/auth";
 
 
 export const useResetPassword = () => {
-
-    useAuth<ResetPasswordFormData>({
+ return useAuth<ResetPasswordFormData>({
         apiFn: resetPassword,
         redirectTo: "/login",
         onSuccess: (data) => {
