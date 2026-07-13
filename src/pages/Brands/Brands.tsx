@@ -1,6 +1,18 @@
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 
 export default function Brands() {
   return (
-    <div>Brands</div>
+    <>
+      <Breadcrumb
+        title="All Brands"
+        description="Explore products from your favorite brands"
+        items={[
+          { label: "Home", path: "/" },
+          { label: "Brands" },
+        ]}
+      />
+      <div>Brands</div>
+
+    </>
   )
 }

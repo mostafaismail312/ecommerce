@@ -20,6 +20,8 @@
     --color-primary-900: #874702;
     --color-primary-950: #5A2E01;
 
+    --color-main: #03081F;
+
     --font-Poppins: 'Poppins',
         sans-serif;
 }
@@ -71,4 +73,22 @@
     border-radius: 5px !important;
 
 
+}
+
+
+
+.featureItem {
+    position: relative !important;
+    overflow: hidden;
+}
+
+.featureItem::before {
+    content: "";
+    position: absolute;
+    background-color: #E77D05;
+    width: 90px;
+    height: 70%;
+    border-radius: 60% 40% 70% 30% / 40% 60% 40% 60%;
+    right: -29px;
+    bottom: -17px;
 }

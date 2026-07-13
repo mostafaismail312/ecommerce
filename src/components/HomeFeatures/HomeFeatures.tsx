@@ -5,9 +5,10 @@ export default function HomeFeatures() {
         <>
             <section className="py-8 ">
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
                     <div
-                        className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                        className="featureItem position-absolute flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                         style={{ opacity: 1, transform: "none" }}
                     >
                         <div className="bg-blue-50 text-blue-500 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
@@ -30,8 +31,9 @@ export default function HomeFeatures() {
                             <p className="text-xs text-gray-500">On orders over 500 EGP</p>
                         </div>
                     </div>
+
                     <div
-                        className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                        className=" featureItem flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                         style={{ opacity: 1, transform: "none" }}
                     >
                         <div className="bg-emerald-50 text-emerald-500 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
@@ -57,7 +59,7 @@ export default function HomeFeatures() {
                         </div>
                     </div>
                     <div
-                        className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                        className=" featureItem flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                         style={{ opacity: 1, transform: "none" }}
                     >
                         <div className="bg-orange-50 text-orange-500 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
@@ -81,7 +83,7 @@ export default function HomeFeatures() {
                         </div>
                     </div>
                     <div
-                        className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                        className=" featureItem flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
                         style={{ opacity: 1, transform: "none" }}
                     >
                         <div className="bg-purple-50 text-purple-500 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
