@@ -1,3 +1,12 @@
+import type { FieldValues } from "react-hook-form";
+
+export type UseAuthProps<T extends FieldValues>={
+ apiFn: (data: T) => Promise<any>;
+ redirectTo?: string;
+ onSuccess: (data: T, response: any) => void;
+}
+
+
 export type ForgetPaasswordFormData = {
     email: string;
   };
