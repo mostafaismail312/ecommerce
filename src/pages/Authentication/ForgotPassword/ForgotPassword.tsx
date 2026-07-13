@@ -9,7 +9,7 @@ import { useForgotPassword } from "../../../hooks/useForgotPassword";
 
 
 export default function ForgotPassword() {
-  const { methods, onSubmit } = useForgotPassword();
+  const { methods, onSubmit , isLoading, error } = useForgotPassword();
  
   return (
    <>
@@ -36,8 +36,8 @@ export default function ForgotPassword() {
             }}
   icon={<FontAwesomeIcon icon={faEnvelope} />}
    />
-        <button className="flex w-full items-center justify-center gap-2 rounded-2xl bg-primary-600 px-4 py-3.5 my-5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700">
-              Reset Password
+        <button  disabled={isLoading} className="flex w-full items-center justify-center gap-2 rounded-2xl bg-primary-600 px-4 py-3.5 my-5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700">
+                {isLoading ? "Sending..." : "Send"}
               <FontAwesomeIcon icon={faArrowRight} />
             </button>
   </form>
