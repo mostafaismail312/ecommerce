@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser, faArrowRight, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
-import AuthShell from '../../components/Auth/AuthShell';
-import AuthInput from '../../components/Auth/AuthInput';
+
 import { FormProvider, useForm } from 'react-hook-form';
+import AuthShell from '../../../components/Auth/AuthShell';
+import AuthInput from '../../../components/Auth/AuthInput';
+import type { RegisterFormData } from '../../../types/auth';
 
 export default function SignUp() {
-  const methods = useForm()
+  const methods = useForm<RegisterFormData>()
 
 
-  const onSubmit = (data) => {
+  const onSubmit = (data:RegisterFormData
+  ) => {
     console.log(data);
 
   }

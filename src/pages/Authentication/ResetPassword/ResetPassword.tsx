@@ -1,26 +1,25 @@
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { useVerifyResetPassword } from '../../../hooks/useVerifyResetPassword';
+import AuthShell from '../../../components/Auth/AuthShell';
+import { FormProvider } from 'react-hook-form';
+import AuthInput from '../../../components/Auth/AuthInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import AuthShell from '../../components/Auth/AuthShell';
-import AuthInput from '../../components/Auth/AuthInput';
-import { FormProvider, useForm } from 'react-hook-form'
+import { faEnvelope ,faArrowRight ,faLock} from '@fortawesome/free-solid-svg-icons';
+import { useResetPassword } from '../../../hooks/useResetPassword';
 
-export default function Login() {
-  const methods = useForm()
-
-  const onSubmit = (data) => {
-    console.log(data);
-
-  }
+export default function ResetPassword() {
+const { methods, onSubmit } = useResetPassword();
+ 
   return (
-    <AuthShell
-      title="Welcome back"
-      subtitle="Sign in to continue your seamless shopping experience."
-      footerText="New here?"
-      footerLinkText="Create an account"
-      footerHref="/signup"
-    >
-      <FormProvider {...methods}>
+   <>
+      <AuthShell
+         title="Reset Password"
+         subtitle="Enter your reset code to verify your identity."
+         footerText="Remember your password?"
+         footerLinkText=""
+         footerHref=""
+       >
+<FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-5">
           <AuthInput
             name='email'
@@ -38,7 +37,7 @@ export default function Login() {
           />
 
           <AuthInput
-            name='Password'
+            name='newPassword'
             label="Password"
             type="password"
             placeholder="Enter your password"
@@ -57,23 +56,15 @@ export default function Login() {
               },
             }}
           />
-          {/* {methods.formState.errors.email && <p>{errors.email.message}</p>} */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2 text-slate-500">
-              <input type="checkbox" className="h-4 w-4 rounded border-slate-300 text-primary-600 focus:ring-primary-500" />
-              Remember me
-            </label>
-            <Link to="/forgot-password" className="font-medium text-primary-600 transition hover:text-primary-700">
-              Forgot password?
-            </Link>
-          </div>
+       
 
           <button className="flex w-full items-center justify-center gap-2 rounded-2xl bg-primary-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700">
-            Sign in
+            Reset Password
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
         </form>
       </FormProvider>
-    </AuthShell>
-  );
+ </AuthShell>
+ </>
+  )
 }

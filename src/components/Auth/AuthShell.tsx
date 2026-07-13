@@ -2,15 +2,9 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import type { AuthShellProps } from '../../types/AuthShellType';
 
-type AuthShellProps = {
-  title: string;
-  subtitle: string;
-  children: ReactNode;
-  footerText: string;
-  footerLinkText: string;
-  footerHref: string;
-};
+
 
 export default function AuthShell({
   title,
