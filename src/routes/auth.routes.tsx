@@ -10,41 +10,41 @@ export const authRoutes = [
   {
     path: "/login",
     element: (
-      <PublicRoute>
+     
         <Login/>
-      </PublicRoute>
+  
     ),
   },
   {
     path: "/signup",
     element: (
-      <PublicRoute>
+   
         <SignUp />
-      </PublicRoute>
+    
     ),
   },
   {
     path: "/forgot-password",
     element: (
-      <PublicRoute>
+      
         <ForgotPassword />
-      </PublicRoute>
+  
     ),
   },
   {
     path: "/verify-reset",
     element: (
-      <PublicRoute>
+     
         <VerifyResetPassword />
-      </PublicRoute>
+    
     ),
   },
   {
     path: "/reset-password",
     element: (
-      <PublicRoute>
+     
         <ResetPassword />
-      </PublicRoute>
+     
     ),
   },
 ];

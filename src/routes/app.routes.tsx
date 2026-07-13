@@ -15,9 +15,8 @@ export const appRoutes = [
   {
     index: true,
     element: (
-      <ProtectedRoute>
+     
         <Home />
-      </ProtectedRoute>
     ),
   },
   {
