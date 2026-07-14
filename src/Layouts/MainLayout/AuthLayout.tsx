@@ -1,13 +1,11 @@
-import Footer from "../../components/Footer/Footer";
-import {Outlet} from "react-router"
-import NavBar from "../../components/NavBar/NavBar";
+import { Outlet } from "react-router"
 
 export default function AuthLayout() {
   return (
     <>
-  <NavBar/>
-    <Outlet />
-   <Footer/>
+
+      <Outlet />
+
     </>
   )
 }

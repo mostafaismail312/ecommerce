@@ -3,10 +3,16 @@ import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { useCategories } from "../../hooks/useCategories";
 
 
+interface CategoryItem {
+  _id?: string;
+  name: string;
+  image?: string;
+}
+
 export default function Categories() {
   const { data, isLoading, error } = useCategories()
-  const categories = data?.data ?? [];
-  // console.log(categories[0].image);
+  const categories: CategoryItem[] = (data?.data ?? []) as CategoryItem[];
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -26,7 +32,7 @@ export default function Categories() {
       {/* categories */}
       <div className="container py-20">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {categories.map((cate) => {
+          {categories.map((cate: CategoryItem) => {
             return (
               <CategoryCard
                 key={cate._id}

@@ -1,10 +1,16 @@
 import { useCategories } from "../../hooks/useCategories";
 import CategoryCard from "../CategoryCard/CategoryCard";
 
+interface CategoryItem {
+    _id?: string;
+    name: string;
+    image?: string;
+}
+
 export default function HomeCategories() {
     const { data, isLoading, error } = useCategories()
-    const categories = data?.data ?? [];
-    // console.log(categories[0].image);
+    const categories: CategoryItem[] = (data?.data ?? []) as CategoryItem[];
+
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
@@ -46,7 +52,7 @@ export default function HomeCategories() {
 
                 {/* categories */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {categories.map((cate) => {
+                    {categories.map((cate: CategoryItem) => {
                         return (
                             <CategoryCard
                                 key={cate._id}

@@ -5,7 +5,6 @@ import { faEnvelope, faLock, faArrowRight } from '@fortawesome/free-solid-svg-ic
 import { FormProvider, useForm } from 'react-hook-form'
 import axios from "axios";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
 import AuthShell from '../../../components/Auth/AuthShell';
 import AuthInput from '../../../components/Auth/AuthInput';
 import type { LoginFormData } from '../../../types/auth';
