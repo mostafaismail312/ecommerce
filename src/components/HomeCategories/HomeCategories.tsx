@@ -1,5 +1,6 @@
 import { useCategories } from "../../hooks/useCategories";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import Skeleton from "../Loading/Skeleton";
 
 interface CategoryItem {
     _id?: string;
@@ -12,7 +13,25 @@ export default function HomeCategories() {
     const categories: CategoryItem[] = (data?.data ?? []) as CategoryItem[];
 
     if (isLoading) {
-        return <h1>Loading...</h1>;
+        return (
+            <section id="categories" className="py-10">
+                <div className="mb-8 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="h-8 w-1.5 rounded-full bg-linear-to-b from-primary-500 to-main/70" />
+                        <Skeleton className="h-9 w-56" rounded="rounded-full" />
+                    </div>
+                    <Skeleton className="hidden h-6 w-36 md:block" rounded="rounded-full" />
+                </div>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+                    {Array.from({ length: 6 }).map((_, index) => (
+                        <div key={index} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                            <Skeleton className="mx-auto mb-3 h-24 w-20" rounded="rounded-2xl" />
+                            <Skeleton className="mx-auto h-4 w-20" />
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
     }
 
     if (error) {

@@ -1,5 +1,6 @@
 import { useProducts } from "../../hooks/useProducts";
 import ProductCard from "../ProductCard/ProductCard";
+import Skeleton from "../Loading/Skeleton";
 interface ProductItem {
     _id: string;
     id: string;
@@ -19,10 +20,35 @@ interface ProductItem {
 export default function PopularProducts() {
     const { data, isLoading, error } = useProducts()
     const products: ProductItem[] = data?.data ?? [];
-    console.log(data);
 
     if (isLoading) {
-        return <h1>Loading...</h1>;
+        return (
+            <section id="categories" className="py-10">
+                <div className="mb-8 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="h-8 w-1.5 rounded-full bg-linear-to-b from-primary-500 to-main/70" />
+                        <Skeleton className="h-9 w-56" rounded="rounded-full" />
+                    </div>
+                    <Skeleton className="hidden h-6 w-36 md:block" rounded="rounded-full" />
+                </div>
+                <div className="grid grid-cols-2 gap-7 md:grid-cols-3 lg:grid-cols-5">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <div key={index} className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
+                            <Skeleton className="h-56 w-full" rounded="rounded-[24px]" />
+                            <div className="mt-4 space-y-3">
+                                <Skeleton className="h-4 w-24" />
+                                <Skeleton className="h-6 w-3/4" />
+                                <Skeleton className="h-4 w-full" />
+                                <div className="flex items-center justify-between gap-3">
+                                    <Skeleton className="h-8 w-20" />
+                                    <Skeleton className="h-10 w-28" />
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        );
     }
 
     if (error) {
@@ -40,15 +66,15 @@ export default function PopularProducts() {
                 </div>{" "}
                 <a
                     className="text-primary-600 hover:text-primary-700 font-medium flex items-center cursor-pointer"
-                    href="categories"
+                    href="products"
                 >
                     View All Products/
 
                 </a>
             </div>
 
-            {/* categories */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {/*  Products */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7">
                 {products.map((product) => {
                     return <ProductCard key={product._id} product={product} />;
                 })}

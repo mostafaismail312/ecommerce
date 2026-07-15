@@ -9,6 +9,7 @@ import Favorites from "../pages/Favorites/Favorites";
 import Orders from "../pages/Orders/Orders";
 import Checkout from "../pages/Checkout/Checkout";
 import ProtectedRoute from "../guards/ProtectedRoute";
+import Products from "../pages/Products/Products";
 
 
 export const appRoutes = [
@@ -81,6 +82,14 @@ export const appRoutes = [
     element: (
       <ProtectedRoute>
         <Orders />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/products",
+    element: (
+      <ProtectedRoute>
+        <Products />
       </ProtectedRoute>
     ),
   },
