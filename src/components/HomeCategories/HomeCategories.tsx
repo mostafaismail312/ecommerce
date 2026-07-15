@@ -8,6 +8,12 @@ interface CategoryItem {
     image?: string;
 }
 
+interface CategoryItem {
+    _id?: string;
+    name: string;
+    image?: string;
+}
+
 export default function HomeCategories() {
     const { data, isLoading, error } = useCategories()
     const categories: CategoryItem[] = (data?.data ?? []) as CategoryItem[];
