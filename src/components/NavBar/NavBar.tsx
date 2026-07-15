@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart, faHeart, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+// import Login from '../../pages/Authentication/Login/Login';
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -48,9 +49,10 @@ export default function NavBar() {
           <Link to="/cart" className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-primary-200 hover:text-primary-600">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
-          <Link to="/login" className="hidden items-center gap-2 rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700 sm:flex">
+          <Link to="/Login/Login" className="hidden items-center gap-2 rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700 sm:flex">
             <FontAwesomeIcon icon={faUser} />
             Sign In
+
           </Link>
           <button className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm lg:hidden">
             <FontAwesomeIcon icon={faBars} />

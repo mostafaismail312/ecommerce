@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useFormContext, type FieldError } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 type AuthInputProps = {
     name: string,
