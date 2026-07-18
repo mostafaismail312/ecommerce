@@ -1,18 +1,11 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { ProductItem } from '../../types/productType';
+import { useWishlist } from '../../hooks/useWishlit';
+import { useState } from 'react';
 
-interface ProductItem {
-    _id?: string;
-    title?: string;
-    price?: number;
-    priceAfterDiscount?: number;
-    imageCover?: string;
-    ratingsAverage?: number;
-    category?: {
-        name?: string;
-    };
-}
+
 
 interface ProductCardProps {
     product?: ProductItem;
@@ -24,6 +17,8 @@ interface ProductCardProps {
     discount?: string;
     image?: string;
 }
+
+
 
 export default function ProductCard({ product, title, category, rating, price, oldPrice, discount, image }: ProductCardProps) {
     const hasDiscount = Boolean(product?.priceAfterDiscount && product.price && product.priceAfterDiscount < product.price) || Boolean(oldPrice && price && oldPrice > price);
@@ -38,7 +33,19 @@ export default function ProductCard({ product, title, category, rating, price, o
     const cardImage = image ?? product?.imageCover ?? 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80';
     const cardPrice = typeof currentPrice === 'number' ? currentPrice : 0;
     const cardOriginalPrice = typeof originalPrice === 'number' ? originalPrice : undefined;
+const handleWishlist = () => {
+  if (!product?._id) return;
 
+  if (isFavorite) {
+    //removeFromWishlist(product._id);
+    setIsFavorite(false);
+  } else {
+    addToWishlist(product._id);
+    setIsFavorite(true);
+  }
+};
+const { addToWishlist, isAdding } = useWishlist();
+const [isFavorite, setIsFavorite] = useState(false);
     return (
         <article className="group w-full overflow-hidden rounded-[8px] bg-white p-4 shadow-[0_20px_60px_-28px_rgba(3,8,31,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-28px_rgba(252,138,6,0.35)]">
             <div className="relative">
@@ -53,7 +60,13 @@ export default function ProductCard({ product, title, category, rating, price, o
                 )}
                 <button
                     type="button"
-                    className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-white/90 text-primary-600 shadow-lg backdrop-blur transition hover:scale-105 hover:bg-primary-500 hover:text-white"
+ className={`absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border transition
+    ${
+      isFavorite
+        ? "bg-red-500 text-white border-red-500"
+        : "bg-white text-slate-500 border-white hover:bg-red-500 hover:text-white"
+    }`}  onClick={handleWishlist}
+                    disabled={isAdding}
                 >
                     <FontAwesomeIcon icon={faHeart} />
                 </button>
