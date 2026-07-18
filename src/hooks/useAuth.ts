@@ -14,6 +14,7 @@ export const useAuth = <T extends FieldValues>({
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const onSubmit =useCallback( async (data: T) => {
     setIsLoading(true);
     setError(null);
@@ -51,5 +52,6 @@ if (redirectTo) {
     onSubmit,
     isLoading,
     error,
+
   };
 };

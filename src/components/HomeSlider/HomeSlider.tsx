@@ -14,6 +14,7 @@ export default function HomeSlider() {
             pagination={{ clickable: true }}
 
         >
+            
             <SwiperSlide style={{ backgroundImage: `url('${homeBg}') `, backgroundSize: "cover" }}>
                 <div className="overLay text-white py-40 bg-gradient-to-r from-primary-600/75 to-primary-400/40 ">
                     <div className="container  space-y-4" >

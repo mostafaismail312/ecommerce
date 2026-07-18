@@ -10,6 +10,7 @@ import Orders from "../pages/Orders/Orders";
 import Checkout from "../pages/Checkout/Checkout";
 import ProtectedRoute from "../guards/ProtectedRoute";
 import Products from "../pages/Products/Products";
+import Profile from "../components/profile/Profile";
 
 
 export const appRoutes = [
@@ -18,6 +19,14 @@ export const appRoutes = [
     element: (
      
         <Home />
+    ),
+  },
+   {
+    path: "/profile",
+    element: (
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
     ),
   },
   {
