@@ -28,6 +28,7 @@ export default function Login() {
       if (data.message === "success") {
         toast("Login successful!");
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate('/')
 
       } else {

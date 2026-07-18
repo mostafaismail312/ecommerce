@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart, faHeart, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faHeart, faUser, faBars ,faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import UserMenu from '../profile/UserMenu';
 // import Login from '../../pages/Authentication/Login/Login';
 
 const navItems = [
@@ -10,10 +11,13 @@ const navItems = [
   { label: 'Deals', to: '/search' },
 ];
 
+
 export default function NavBar() {
+   const isLoggedIn = !!localStorage.getItem("token");
+
   return (
-    <header className="border-b border-primary-100/70 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <header className=" sticky border-b border-primary-100/70 bg-white/90 backdrop-blur  z-[9999]">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8 z-[999]">
         <Link to="/" className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-600 text-lg font-semibold text-white shadow-lg shadow-primary-600/20">
             O
@@ -49,11 +53,15 @@ export default function NavBar() {
           <Link to="/cart" className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:border-primary-200 hover:text-primary-600">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
-          <Link to="/Login/Login" className="hidden items-center gap-2 rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700 sm:flex">
+          {isLoggedIn ?(
+        <UserMenu/>)
+          :
+          (
+          <Link to="/Login" className="hidden items-center gap-2 rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary-600/20 transition hover:bg-primary-700 sm:flex">
             <FontAwesomeIcon icon={faUser} />
             Sign In
 
-          </Link>
+          </Link>)}
           <button className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm lg:hidden">
             <FontAwesomeIcon icon={faBars} />
           </button>
