@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import 'swiper/css';
 import homeBg from "../../assets/Home-bg.jpg"
 export default function HomeSlider() {
@@ -15,6 +14,7 @@ export default function HomeSlider() {
             pagination={{ clickable: true }}
 
         >
+            
             <SwiperSlide style={{ backgroundImage: `url('${homeBg}') `, backgroundSize: "cover" }}>
                 <div className="overLay text-white py-40 bg-gradient-to-r from-primary-600/75 to-primary-400/40 ">
                     <div className="container  space-y-4" >
