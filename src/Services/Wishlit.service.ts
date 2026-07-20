@@ -22,3 +22,12 @@ export const addToWishlist = async (
 
   return data;
 };
+
+
+export const removeFromWishlist = async (
+  productId: string
+): Promise<AddWishlistResponse> => {
+  const { data } = await api.delete<AddWishlistResponse>(`/wishlist/${productId}`);
+
+  return data;
+};
