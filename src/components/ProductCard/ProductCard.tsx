@@ -8,6 +8,7 @@ import {
   addToWishlist,
   removeFromWishlist,
 } from "../../Services/Wishlit.service";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   product?: ProductItem;
@@ -73,11 +74,13 @@ export default function ProductCard({
   return (
     <article className="group w-full overflow-hidden rounded-[8px] bg-white p-4 shadow-[0_20px_60px_-28px_rgba(3,8,31,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-28px_rgba(252,138,6,0.35)]">
       <div className="relative">
-        <img
-          src={cardImage}
-          alt={cardTitle}
-          className="h-56 w-full rounded-[22px] object-cover transition duration-500 group-hover:scale-105"
-        />
+        <Link to={`/products/${product?._id}`}>
+          <img
+            src={cardImage}
+            alt={cardTitle}
+            className="h-56 w-full rounded-[22px] object-cover transition duration-500 group-hover:scale-105"
+          />
+        </Link>
         {hasDiscount && (
           <span className="absolute left-3 top-3 rounded-full bg-red-500 px-2 py-1 text-sm font-semibold text-white shadow-lg">
             {discountPercentage
@@ -97,8 +100,8 @@ export default function ProductCard({
           <FontAwesomeIcon
             icon={isFavorite ? faHeartSolid : faHeartRegular}
             className={`transition ${isFavorite
-                ? "text-red-500"
-                : "text-slate-500 group-hover:text-orange-300"
+              ? "text-red-500"
+              : "text-slate-500 group-hover:text-orange-300"
               }`}
           />
         </button>
@@ -117,7 +120,7 @@ export default function ProductCard({
 
         <div>
           <h3 className="text-lg font-semibold line-clamp-1 text-main">
-            {cardTitle}
+            <Link to={`/products/${product?._id}`}>{cardTitle}</Link>
           </h3>
           <p className="mt-1 text-sm text-slate-500">
             Elegant everyday comfort with elevated finish.
