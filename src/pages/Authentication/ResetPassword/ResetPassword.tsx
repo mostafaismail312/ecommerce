@@ -16,6 +16,8 @@ export default function ResetPassword() {
         footerText="Remember your password?"
         footerLinkText=""
         footerHref=""
+        illustrationImage="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=900&q=80"
+  illustrationCaption="A strong password keeps your orders and wishlist safe."
       >
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-5">

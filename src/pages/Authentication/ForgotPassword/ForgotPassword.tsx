@@ -19,6 +19,8 @@ export default function ForgotPassword() {
         footerText=""
         footerLinkText=""
         footerHref=""
+        illustrationImage="https://images.unsplash.com/photo-1633265486064-086b219458ec?auto=format&fit=crop&w=900&q=80"
+  illustrationCaption="Don't worry, it happens. We'll get you back in within minutes."
       >
         <FormProvider {...methods} >
           <form onSubmit={methods.handleSubmit(onSubmit)}>

@@ -1,10 +1,14 @@
 import type { ReactNode } from "react";
 
-export type AuthShellProps = {
+
+export interface AuthShellProps {
   title: string;
   subtitle: string;
   children: ReactNode;
-  footerText?: string;
+  footerText: string;
   footerLinkText: string;
   footerHref: string;
-};
+  illustrationImage?: string;
+  illustrationAlt?: string;
+  illustrationCaption?: string;
+}
