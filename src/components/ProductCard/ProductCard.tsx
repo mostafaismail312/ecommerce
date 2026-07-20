@@ -4,11 +4,11 @@ import { faCartShopping, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { ProductItem } from "../../types/productType";
 import { useWishlist } from "../../hooks/useWishlit";
-import { useState } from "react";
 import {
   addToWishlist,
   removeFromWishlist,
 } from "../../Services/Wishlit.service";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   product?: ProductItem;
@@ -43,8 +43,8 @@ export default function ProductCard({
   const discountPercentage =
     product?.priceAfterDiscount && product.price
       ? Math.round(
-          ((product.price - product.priceAfterDiscount) / product.price) * 100,
-        )
+        ((product.price - product.priceAfterDiscount) / product.price) * 100,
+      )
       : undefined;
   const cardTitle = title ?? product?.title ?? "Premium Product";
   const cardCategory = category ?? product?.category?.name ?? "Featured";
@@ -56,29 +56,31 @@ export default function ProductCard({
   const cardPrice = typeof currentPrice === "number" ? currentPrice : 0;
   const cardOriginalPrice =
     typeof originalPrice === "number" ? originalPrice : undefined;
-//   const handleWishlist = () => {
-//     toggleWishlist(product?._id)
-//     if (!product?._id) return;
+  //   const handleWishlist = () => {
+  //     toggleWishlist(product?._id)
+  //     if (!product?._id) return;
 
-//     if (isFavorite) {
-//       removeFromWishlist(product._id);
-//       setIsFavorite(false);
-//     } else {
-//       addToWishlist(product._id);
-//       setIsFavorite(true);
-//     }
-//   };
+  //     if (isFavorite) {
+  //       removeFromWishlist(product._id);
+  //       setIsFavorite(false);
+  //     } else {
+  //       addToWishlist(product._id);
+  //       setIsFavorite(true);
+  //     }
+  //   };
   const { isInWishlist, toggleWishlist, isAdding, isRemoving } = useWishlist();
   const isFavorite = product?._id ? isInWishlist(product._id) : false;
 
   return (
     <article className="group w-full overflow-hidden rounded-[8px] bg-white p-4 shadow-[0_20px_60px_-28px_rgba(3,8,31,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-28px_rgba(252,138,6,0.35)]">
       <div className="relative">
-        <img
-          src={cardImage}
-          alt={cardTitle}
-          className="h-56 w-full rounded-[22px] object-cover transition duration-500 group-hover:scale-105"
-        />
+        <Link to={`/products/${product?._id}`}>
+          <img
+            src={cardImage}
+            alt={cardTitle}
+            className="h-56 w-full rounded-[22px] object-cover transition duration-500 group-hover:scale-105"
+          />
+        </Link>
         {hasDiscount && (
           <span className="absolute left-3 top-3 rounded-full bg-red-500 px-2 py-1 text-sm font-semibold text-white shadow-lg">
             {discountPercentage
@@ -90,18 +92,17 @@ export default function ProductCard({
           type="button"
           className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border bg-white border-white transition group"
           onClick={() => {
-    if (!product?._id) return;
-    toggleWishlist(product._id);
-  }}
+            if (!product?._id) return;
+            toggleWishlist(product._id);
+          }}
           disabled={isAdding || isRemoving}
         >
           <FontAwesomeIcon
-           icon={isFavorite ? faHeartSolid : faHeartRegular}
-            className={`transition ${
-              isFavorite
-                ? "text-red-500"
-                : "text-slate-500 group-hover:text-orange-300"
-            }`}
+            icon={isFavorite ? faHeartSolid : faHeartRegular}
+            className={`transition ${isFavorite
+              ? "text-red-500"
+              : "text-slate-500 group-hover:text-orange-300"
+              }`}
           />
         </button>
       </div>
@@ -119,7 +120,7 @@ export default function ProductCard({
 
         <div>
           <h3 className="text-lg font-semibold line-clamp-1 text-main">
-            {cardTitle}
+            <Link to={`/products/${product?._id}`}>{cardTitle}</Link>
           </h3>
           <p className="mt-1 text-sm text-slate-500">
             Elegant everyday comfort with elevated finish.
