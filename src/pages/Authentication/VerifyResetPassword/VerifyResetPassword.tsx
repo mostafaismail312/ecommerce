@@ -16,6 +16,8 @@ export default function VerifyResetPassword() {
         footerText=""
         footerLinkText=""
         footerHref=""
+         illustrationImage="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=900&q=80"
+  illustrationCaption="Track your orders live, from dispatch to your doorstep."
       >
         <FormProvider {...methods} >
           <form onSubmit={methods.handleSubmit(onSubmit)}>

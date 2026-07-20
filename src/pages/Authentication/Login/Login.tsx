@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import AuthShell from '../../../components/Auth/AuthShell';
 import AuthInput from '../../../components/Auth/AuthInput';
 import type { LoginFormData } from '../../../types/auth';
+import webShopping from "../../../assets/illustrations/Price-cuate (1).svg";
+
 
 export default function Login() {
   const methods = useForm<LoginFormData>()
@@ -51,7 +53,10 @@ export default function Login() {
           footerText="New here?"
           footerLinkText="Create an account"
           footerHref="/signup"
-        >
+         illustrationImage = {webShopping}
+   illustrationCaption="Save your favorite items to your wishlist for later."
+>
+        
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-5">
               <AuthInput

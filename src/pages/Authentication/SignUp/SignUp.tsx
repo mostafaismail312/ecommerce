@@ -23,6 +23,8 @@ export default function SignUp() {
       footerText="Already have an account?"
       footerLinkText="Log in"
       footerHref="/login"
+        illustrationImage="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=900&q=80"
+  illustrationCaption="Track your orders live, from dispatch to your doorstep."
     >
       <FormProvider {...methods}>
         <form className="space-y-5" onSubmit={methods.handleSubmit(onSubmit)}>
