@@ -1,56 +1,72 @@
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { faCartShopping, faStar } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faCartShopping, faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
-interface ProductItem {
-    _id?: string;
-    title?: string;
-    price?: number;
+export interface ProductItem {
+    _id: string;
+    title: string;
+    price: number;
     priceAfterDiscount?: number;
-    imageCover?: string;
-    ratingsAverage?: number;
-    category?: {
-        name?: string;
+    imageCover: string;
+    ratingsAverage: number;
+    ratingsQuantity: number;
+    category: {
+        _id: string;
+        name: string;
+        slug: string;
+        image: string;
     };
 }
 
 interface ProductCardProps {
-    product?: ProductItem;
-    title?: string;
-    category?: string;
-    rating?: number;
-    price?: number;
-    oldPrice?: number;
-    discount?: string;
-    image?: string;
+    product: ProductItem;
 }
 
-export default function ProductCard({ product, title, category, rating, price, oldPrice, discount, image }: ProductCardProps) {
-    const hasDiscount = Boolean(product?.priceAfterDiscount && product.price && product.priceAfterDiscount < product.price) || Boolean(oldPrice && price && oldPrice > price);
-    const currentPrice = product?.priceAfterDiscount ?? price ?? 0;
-    const originalPrice = product?.priceAfterDiscount && product.price ? product.price : oldPrice;
-    const discountPercentage = product?.priceAfterDiscount && product.price
-        ? Math.round(((product.price - product.priceAfterDiscount) / product.price) * 100)
-        : undefined;
-    const cardTitle = title ?? product?.title ?? 'Premium Product';
-    const cardCategory = category ?? product?.category?.name ?? 'Featured';
-    const cardRating = rating ?? product?.ratingsAverage ?? 0;
-    const cardImage = image ?? product?.imageCover ?? 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80';
-    const cardPrice = typeof currentPrice === 'number' ? currentPrice : 0;
-    const cardOriginalPrice = typeof originalPrice === 'number' ? originalPrice : undefined;
+export default function ProductCard({ product }: ProductCardProps) {
+    const {
+        _id,
+        title,
+        price,
+        priceAfterDiscount,
+        imageCover,
+        ratingsAverage,
+        category,
+    } = product;
+    const hasDiscount =
+        !!priceAfterDiscount &&
+        !!price &&
+        priceAfterDiscount < price;
+    const cardPrice = priceAfterDiscount ?? price ?? 0;
+    const cardOriginalPrice = hasDiscount ? price : undefined;
+    const discountPercentage =
+        hasDiscount && price && priceAfterDiscount
+            ? Math.round(((price - priceAfterDiscount) / price) * 100)
+            : undefined;
+    const cardTitle = title ?? "Premium Product";
+    const cardCategory = category?.name ?? "Featured";
+    const cardRating = ratingsAverage ?? 0;
+    const cardImage =
+        imageCover ??
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80";
 
     return (
         <article className="group w-full overflow-hidden rounded-[8px] bg-white p-4 shadow-[0_20px_60px_-28px_rgba(3,8,31,0.28)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-28px_rgba(252,138,6,0.35)]">
             <div className="relative">
-                <img
-                    src={cardImage} alt={cardTitle}
-                    className="h-56 w-full rounded-[22px] object-cover transition duration-500 group-hover:scale-105"
-                />
+                <Link to={`/products/${_id}`}>
+                    <img
+                        src={cardImage}
+                        alt={cardTitle}
+                        className="h-56 w-full rounded-[22px] object-cover transition duration-500 group-hover:scale-105"
+                    />
+                </Link>
+
                 {hasDiscount && (
                     <span className="absolute left-3 top-3 rounded-full bg-red-500 px-2 py-1 text-sm font-semibold text-white shadow-lg">
-                        {discountPercentage ? `${discountPercentage}%` : discount ?? 'Sale'}
+                        {discountPercentage}%
                     </span>
                 )}
+
                 <button
                     type="button"
                     className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-white/90 text-primary-600 shadow-lg backdrop-blur transition hover:scale-105 hover:bg-primary-500 hover:text-white"
@@ -64,6 +80,7 @@ export default function ProductCard({ product, title, category, rating, price, o
                     <span className="rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-700">
                         {cardCategory}
                     </span>
+
                     <div className="flex items-center gap-1 text-sm font-medium text-amber-500">
                         <FontAwesomeIcon icon={faStar} />
                         <span className="text-slate-600">{cardRating}</span>
@@ -71,21 +88,23 @@ export default function ProductCard({ product, title, category, rating, price, o
                 </div>
 
                 <div>
-                    <h3 className="text-lg font-semibold line-clamp-1 text-main">{cardTitle}</h3>
-                    <p className="mt-1 text-sm text-slate-500">Elegant everyday comfort with elevated finish.</p>
+                    <h3 className="line-clamp-1 text-lg font-semibold text-main">
+                        {cardTitle}
+                    </h3>
+
+                    <p className="mt-1 text-sm text-slate-500">
+                        Elegant everyday comfort with elevated finish.
+                    </p>
                 </div>
 
                 <div className="flex items-end justify-between gap-3">
                     <div>
-                        {/* <p className="text-xl font-bold text-primary-700">${product.priceAfterDiscount}</p>
-                        {product.price && (
-                            <p className="text-sm text-slate-400 line-through">${product.price}</p>
-                        )} */}
                         {cardOriginalPrice ? (
                             <>
                                 <p className="text-xl font-bold text-primary-700">
                                     ${cardPrice}
                                 </p>
+
                                 <p className="text-sm text-slate-400 line-through">
                                     ${cardOriginalPrice}
                                 </p>
