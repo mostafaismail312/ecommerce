@@ -9,8 +9,13 @@ export const api = axios.create({
 
 
 api.interceptors.request.use(
+
   (config) => {
+      console.log("Before Request");
+  console.log("Token:", localStorage.getItem("token"));
     const token = localStorage.getItem("token");
+      console.log("Token:", token);
+
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -23,15 +28,15 @@ api.interceptors.request.use(
   }
 );
 
-api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem("token");
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      config.headers.token = token;
     }
 
-    return Promise.reject(error);
-  }
+    return config;
+  },
+  (error) => Promise.reject(error)
 );
